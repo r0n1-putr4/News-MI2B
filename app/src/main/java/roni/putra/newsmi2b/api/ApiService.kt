@@ -9,7 +9,7 @@ import roni.putra.newsmi2b.model.RegisterResponse
 interface ApiService {
 
     @FormUrlEncoded
-    @POST("api_basic-master/register.php")
+    @POST("api_basic/register.php")
     fun register(
         @Field("username") username: String,
         @Field("password") password: String,

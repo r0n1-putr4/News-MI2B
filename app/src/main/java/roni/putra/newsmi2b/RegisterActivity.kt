@@ -53,7 +53,7 @@ class RegisterActivity : AppCompatActivity() {
     private fun prosesRegister() {
 
         ApiClient.apiService.register(
-            etEmail.text.toString(),
+            etUsername.text.toString(),
             etPassword.text.toString(),
             etFullname.text.toString(),
             etEmail.text.toString()
