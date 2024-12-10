@@ -51,7 +51,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun prosesRegister() {
-
+        progressBar.visibility = View.VISIBLE
         ApiClient.apiService.register(
             etUsername.text.toString(),
             etPassword.text.toString(),
