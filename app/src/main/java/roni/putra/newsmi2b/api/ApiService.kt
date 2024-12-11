@@ -3,7 +3,10 @@ package roni.putra.newsmi2b.api
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Query
+import roni.putra.newsmi2b.model.BeritaResponse
 import roni.putra.newsmi2b.model.LoginResponse
 import roni.putra.newsmi2b.model.RegisterResponse
 
@@ -24,4 +27,7 @@ interface ApiService {
         @Field("username") username: String,
         @Field("password") password: String
     ): Call<LoginResponse>
+
+    @GET("api_basic/get_berita.php")
+    fun getBerita(@Query("judul") judul: String): Call<BeritaResponse>
 }
