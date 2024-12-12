@@ -43,4 +43,5 @@ interface ApiService {
         @Part("isiBerita") isiBerita: RequestBody,
         @Part fileGambar: MultipartBody.Part
     ): Call<AddBeritaResponse>
+
 }
