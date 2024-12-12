@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:background="#fff"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#fff"
-    tools:context=".RegisterActivity">
+    tools:context=".TambahBeritaActivity">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,12 +22,11 @@
             android:orientation="vertical">
 
             <TextView
-
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:background="#F4CA58"
                 android:gravity="center"
-                android:text="New Account"
+                android:text="New News"
                 android:textSize="25sp" />
 
             <ProgressBar
@@ -45,12 +46,13 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:paddingStart="20dp"
+            android:background="#fff"
             android:paddingEnd="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Username"
+                android:text="Judul"
                 android:textColor="#000"
                 android:textSize="15sp" />
 
@@ -59,70 +61,63 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:background="@drawable/bg_edit_text"
-                android:drawableStart="@drawable/ic_person"
+                android:drawableStart="@drawable/ic_title"
                 android:drawablePadding="5dp"
                 android:drawableTint="#F44336"
-                android:hint="roni"
+                android:hint="Judul Berita"
                 android:paddingLeft="10dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Password"
+                android:text="Gambar"
                 android:textColor="#000"
                 android:textSize="15sp" />
 
-            <EditText
-                android:id="@+id/etPassword"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:background="@drawable/bg_edit_text"
-                android:drawableStart="@drawable/ic_password"
-                android:drawablePadding="5dp"
-                android:drawableTint="#F44336"
-                android:hint="*****"
-                android:inputType="textPassword"
-                android:paddingLeft="10dp" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Pilih File" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="48sp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_edit_text"
+                    android:drawablePadding="5dp"
+                    android:hint="Nama File"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"/>
+
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Full Name"
+                android:text="Isi Berita"
                 android:textColor="#000"
+                android:layout_marginTop="10dp"
                 android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/etFullname"
+                android:id="@+id/etIsi"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="250dp"
                 android:background="@drawable/bg_edit_text"
-                android:drawableStart="@drawable/ic_fullname"
                 android:drawablePadding="5dp"
                 android:drawableTint="#F44336"
-                android:hint="Roni Putra"
-                android:inputType="text"
-                android:paddingLeft="10dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Email"
-                android:textColor="#000"
-                android:textSize="15sp" />
-
-            <EditText
-                android:id="@+id/etEmail"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:background="@drawable/bg_edit_text"
-                android:drawableStart="@drawable/ic_email"
-                android:drawablePadding="5dp"
-                android:drawableTint="#F44336"
-                android:hint="rn.putra@gmail.com"
-                android:inputType="textEmailAddress"
+                android:gravity="start"
+                android:inputType="textMultiLine"
+                android:hint="Isi Berita"
                 android:paddingLeft="10dp" />
 
 
@@ -132,33 +127,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="#F44336"
-                android:text="Sign Up" />
+                android:text="Tambah" />
 
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:text="Already have an account?" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Log In"
-                android:id="@+id/tvLogin"
-                android:textColor="#E95322" />
-
-
-        </LinearLayout>
 
 
     </LinearLayout>

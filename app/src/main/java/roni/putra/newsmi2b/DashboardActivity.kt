@@ -1,6 +1,8 @@
 package roni.putra.newsmi2b
 
+import android.content.Intent
 import android.os.Bundle
+import android.service.controls.actions.FloatAction
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.SearchView
@@ -10,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -23,6 +26,7 @@ class DashboardActivity : AppCompatActivity() {
     private lateinit var rvNews: RecyclerView
     private lateinit var progressBar: ProgressBar
     private lateinit var svJudul: SearchView
+    private lateinit var fab_tambah: FloatingActionButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +42,7 @@ class DashboardActivity : AppCompatActivity() {
         rvNews = findViewById(R.id.rvNews)
         progressBar = findViewById(R.id.progressBar)
         svJudul = findViewById(R.id.svJudul)
+        fab_tambah = findViewById(R.id.fab_tambah)
 
         getBerita("")
 
@@ -51,6 +56,10 @@ class DashboardActivity : AppCompatActivity() {
                 return true
             }
         })
+
+        fab_tambah.setOnClickListener {
+            startActivity(Intent(this@DashboardActivity,TambahBeritaActivity::class.java))
+        }
 
     }
 

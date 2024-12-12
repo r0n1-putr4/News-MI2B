@@ -11,6 +11,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,6 +31,12 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_login)
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
 
         tvSignUp = findViewById(R.id.tvSignUp)
         etUsername = findViewById(R.id.etUsername)
@@ -55,15 +63,18 @@ class LoginActivity : AppCompatActivity() {
                     response: Response<LoginResponse>
                 ) {
                     if (response.isSuccessful) {
-                        val responseAPI = "${response.body()?.message}\n${response.body()?.data?.fullname}"
-                        Toast.makeText(
-                            this@LoginActivity, responseAPI, Toast.LENGTH_SHORT
-                        ).show()
+                        if (response.body()!!.success){
+                            startActivity(Intent(this@LoginActivity,DashboardActivity::class.java))
+                        }else{
+                            Toast.makeText(
+                                this@LoginActivity, "Login failed ${response.body()!!.message}", Toast.LENGTH_SHORT
+                            ).show()
+                        }
                         progressBar.visibility = View.GONE
                     } else {
                         val errorMessage = response.errorBody()?.string() ?: "Unknown error"
                         Toast.makeText(
-                            this@LoginActivity, "Register failed $errorMessage", Toast.LENGTH_SHORT
+                            this@LoginActivity, "Login failed $errorMessage", Toast.LENGTH_SHORT
                         ).show()
                         progressBar.visibility = View.GONE
                     }

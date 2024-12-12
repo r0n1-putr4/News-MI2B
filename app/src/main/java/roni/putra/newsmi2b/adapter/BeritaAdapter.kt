@@ -1,5 +1,6 @@
 package roni.putra.newsmi2b.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import roni.putra.newsmi2b.DetailBeritaActivity
 import roni.putra.newsmi2b.R
 import roni.putra.newsmi2b.model.BeritaResponse
 
@@ -40,6 +42,17 @@ class BeritaAdapter(
         holder.tvTanggal.text = hasilResponse.tgl_indonesia_berita
         holder.ratingBar.rating = hasilResponse.rating.toFloat()
         holder.tvRating.text = "${hasilResponse.rating}"
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context,DetailBeritaActivity::class.java).apply {
+                putExtra("gambar",hasilResponse.gambar)
+                putExtra("judul",hasilResponse.judul)
+                putExtra("tgl_indonesia_berita",hasilResponse.tgl_indonesia_berita)
+                putExtra("rating",hasilResponse.rating)
+                putExtra("isi",hasilResponse.isi)
+            }
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     fun setData(data: List<BeritaResponse.ListItems>){
