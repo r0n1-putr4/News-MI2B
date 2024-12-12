@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.service.controls.actions.FloatAction
 import android.view.View
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.SearchView
 import android.widget.Toast
@@ -27,6 +28,7 @@ class DashboardActivity : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
     private lateinit var svJudul: SearchView
     private lateinit var fab_tambah: FloatingActionButton
+    private lateinit var imgNotFound: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +45,7 @@ class DashboardActivity : AppCompatActivity() {
         progressBar = findViewById(R.id.progressBar)
         svJudul = findViewById(R.id.svJudul)
         fab_tambah = findViewById(R.id.fab_tambah)
+        imgNotFound = findViewById(R.id.imgNotFound)
 
         getBerita("")
 
@@ -77,10 +80,12 @@ class DashboardActivity : AppCompatActivity() {
                         beritaAdapter= BeritaAdapter(arrayListOf())
                         rvNews.adapter = beritaAdapter
                         beritaAdapter.setData(response.body()!!.data)
+                        imgNotFound.visibility = View.GONE
 
                     }else{
                         beritaAdapter= BeritaAdapter(arrayListOf())
                         rvNews.adapter = beritaAdapter
+                        imgNotFound.visibility = View.VISIBLE
                     }
                     progressBar.visibility = View.GONE
                 }

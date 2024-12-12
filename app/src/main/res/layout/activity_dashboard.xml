@@ -14,7 +14,17 @@
         android:id="@+id/svJudul"
         />
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/svJudul"
+        android:src="@drawable/page_not_found"
+        android:id="@+id/imgNotFound"
+        android:visibility="gone"
+        />
+
     <androidx.recyclerview.widget.RecyclerView
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/rvNews"
