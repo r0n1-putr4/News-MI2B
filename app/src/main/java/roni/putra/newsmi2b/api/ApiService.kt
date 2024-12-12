@@ -1,6 +1,7 @@
 package roni.putra.newsmi2b.api
 
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -38,8 +39,8 @@ interface ApiService {
     @Multipart
     @POST("api_basic/add_berita.php")
     fun addBerita(
-        @Field("judul") judul: String,
-        @Field("isiBerita") isiBerita: String,
+        @Part("judul") judul: RequestBody,
+        @Part("isiBerita") isiBerita: RequestBody,
         @Part fileGambar: MultipartBody.Part
     ): Call<AddBeritaResponse>
 }

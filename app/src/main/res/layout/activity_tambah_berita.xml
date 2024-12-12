@@ -57,7 +57,7 @@
                 android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/etUsername"
+                android:id="@+id/etJudul"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:background="@drawable/bg_edit_text"
@@ -84,6 +84,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:id="@+id/btnFileGambar"
                     android:text="Pilih File" />
 
                 <TextView
@@ -92,8 +93,9 @@
                     android:layout_weight="1"
                     android:background="@drawable/bg_edit_text"
                     android:drawablePadding="5dp"
-                    android:hint="Nama File"
+                    android:hint="Selected File"
                     android:layout_marginLeft="10dp"
+                    android:id="@+id/tvSelectedFile"
                     android:gravity="center"/>
 
 
@@ -122,7 +124,7 @@
 
 
             <Button
-                android:id="@+id/btnRegister"
+                android:id="@+id/btnTambah"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
