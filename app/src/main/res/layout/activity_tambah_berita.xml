@@ -26,7 +26,7 @@
                 android:layout_height="80dp"
                 android:background="#F4CA58"
                 android:gravity="center"
-                android:text="New News"
+                android:text="Add New"
                 android:textSize="25sp" />
 
             <ProgressBar

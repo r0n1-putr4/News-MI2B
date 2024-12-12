@@ -71,7 +71,7 @@ class TambahBeritaActivity : AppCompatActivity() {
         }
         btnTambah.setOnClickListener {
             imageFile?.let { file ->
-                addBerita(etJudul.text.toString(),etIsi.text.toString(),file)
+                addBerita(etJudul.text.toString(), etIsi.text.toString(), file)
             }
         }
 
@@ -86,7 +86,6 @@ class TambahBeritaActivity : AppCompatActivity() {
         val title = judul.toRequestBody("text/plain".toMediaTypeOrNull())
         val description = isi.toRequestBody("text/plain".toMediaTypeOrNull())
 
-
         ApiClient.apiService.addBerita(title, description, part)
             .enqueue(object : Callback<AddBeritaResponse> {
                 override fun onResponse(
@@ -94,7 +93,6 @@ class TambahBeritaActivity : AppCompatActivity() {
                     response: Response<AddBeritaResponse>
                 ) {
                     if (response.isSuccessful) {
-
                         if (response.body()!!.success) {
                             startActivity(
                                 Intent(
@@ -159,7 +157,6 @@ class TambahBeritaActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (resultCode == Activity.RESULT_OK && data != null) {
-
             val uri = data.data!!
             imageFile = File(uri.path!!)
             tvSelectedFile.text = imageFile!!.name
