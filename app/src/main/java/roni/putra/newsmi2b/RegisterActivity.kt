@@ -85,6 +85,7 @@ class RegisterActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
                 Toast.makeText(this@RegisterActivity, t.message, Toast.LENGTH_SHORT).show()
+                progressBar.visibility = View.GONE
             }
         })
     }
