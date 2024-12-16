@@ -17,6 +17,8 @@ import roni.putra.newsmi2b.model.RegisterResponse
 
 interface ApiService {
 
+
+
     @FormUrlEncoded
     @POST("api_basic/register.php")
     fun register(
@@ -25,6 +27,12 @@ interface ApiService {
         @Field("fullname") fullname: String,
         @Field("email") email: String,
     ): Call<RegisterResponse>
+
+    @FormUrlEncoded
+    @POST("api_basic/del_berita.php")
+    fun delBerita(
+        @Field("id") id: String
+    ): Call<BeritaResponse>
 
     @FormUrlEncoded
     @POST("api_basic/login.php")

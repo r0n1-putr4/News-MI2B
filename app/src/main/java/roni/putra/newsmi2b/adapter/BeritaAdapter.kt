@@ -12,8 +12,13 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import roni.putra.newsmi2b.DetailBeritaActivity
 import roni.putra.newsmi2b.R
+import roni.putra.newsmi2b.api.ApiClient
+import roni.putra.newsmi2b.api.ApiService
 import roni.putra.newsmi2b.model.BeritaResponse
 
 class BeritaAdapter(
@@ -39,7 +44,7 @@ class BeritaAdapter(
     }
 
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, @SuppressLint("RecyclerView") position: Int) {
         val hasilResponse = hasil[position]
         Picasso.get().load(hasilResponse.gambar).into(holder.imgBerita)
         holder.tvJudul.text = hasilResponse.judul
@@ -65,14 +70,38 @@ class BeritaAdapter(
                 setMessage("Apakah anda ingin melanjutkan?")
                 setIcon(R.drawable.ic_delete)
 
-                setPositiveButton("Yakin"){dialogInterface, i ->
-                    hasil.removeAt(position)
-                    notifyItemRemoved(position) // Notify the position of the removed item
-                    notifyItemRangeChanged(position, hasil.size - position) //
+                setPositiveButton("Yakin") { dialogInterface, i ->
+                    ApiClient.apiService.delBerita(hasilResponse.id)
+                        .enqueue(object : Callback<BeritaResponse> {
+                            override fun onResponse(
+                                call: Call<BeritaResponse>,
+                                response: Response<BeritaResponse>
+                            ) {
+                                if (response.body()!!.success) {
+                                    removeItem(position)
+                                } else {
+                                    Toast.makeText(
+                                        holder.itemView.context,
+                                        response.body()!!.message,
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+
+                            }
+
+                            override fun onFailure(call: Call<BeritaResponse>, t: Throwable) {
+                                Toast.makeText(
+                                    holder.itemView.context,
+                                    "Ada Kesalahan Server",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+
+                            }
+                        })
                     dialogInterface.dismiss()
                 }
 
-                setNegativeButton("Batal"){dialogInterface, i->
+                setNegativeButton("Batal") { dialogInterface, i ->
                     dialogInterface.dismiss()
                 }
             }.show()
@@ -80,6 +109,12 @@ class BeritaAdapter(
             true
         }
 
+    }
+
+    fun removeItem(position: Int) {
+        hasil.removeAt(position)
+        notifyItemRemoved(position) // Notify the position of the removed item
+        notifyItemRangeChanged(position, hasil.size - position) // Optional: Adjust for index shifts
     }
 
     fun setData(data: List<BeritaResponse.ListItems>) {
