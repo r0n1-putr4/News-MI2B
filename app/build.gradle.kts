@@ -50,10 +50,8 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     //Interceptor
     implementation ("com.squareup.okhttp3:logging-interceptor:4.9.0")
-
     //ImagePicker
     implementation ("com.github.dhaval2404:imagepicker:2.1")
-
     //Picasso
     implementation ("com.squareup.picasso:picasso:2.8")
 }
