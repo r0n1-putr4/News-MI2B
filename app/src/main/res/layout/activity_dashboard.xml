@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -8,55 +7,46 @@
     android:layout_height="match_parent"
     tools:context=".DashboardActivity">
 
-    <SearchView
+    <androidx.appcompat.widget.SearchView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/svJudul"
-        />
-
+        android:id="@+id/svWisata"/>
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/svJudul"
-        android:src="@drawable/page_not_found"
         android:id="@+id/imgNotFound"
-        android:visibility="gone"
-        />
+        android:src="@drawable/page_not_found"
+        android:layout_below="@id/svWisata"
+        android:visibility="gone"/>
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/svWisata"
+        android:id="@+id/progressBar"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"/>
 
     <androidx.recyclerview.widget.RecyclerView
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/rvNews"
-        android:layout_below="@id/svJudul"
+        android:layout_below="@+id/svWisata"
+        android:id="@+id/rvWisata"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/layout_items_new"
         />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:indeterminateTint="#F44336"
-        android:layout_centerInParent="true"
-        android:visibility="gone" />
-
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_tambah"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:src="@drawable/ic_add"
+        android:backgroundTint="#D5556F"
+        app:tint="@color/white"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
-        android:backgroundTint="#F44336"
-        android:contentDescription="TODO"
-        android:src="@drawable/ic_add"
-        app:tint="@android:color/white" />
-
-
+        android:contentDescription="list berita"
+        android:id="@+id/floatBtnTambah"
+        />
 
 </RelativeLayout>
