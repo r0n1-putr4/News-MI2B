@@ -6,6 +6,7 @@ import android.widget.RatingBar
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.squareup.picasso.Picasso
@@ -34,6 +35,8 @@ class DetailBeritaActivity : AppCompatActivity() {
         tvRating = findViewById(R.id.tvRating)
         ratingBar = findViewById(R.id.ratingBar)
         tvIsi = findViewById(R.id.tvIsi)
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
 
         val gambar = intent.getStringExtra("gambar")
         val judul = intent.getStringExtra("judul")
