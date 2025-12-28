@@ -10,6 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.squareup.picasso.Picasso
 
+
 class DetailBeritaActivity : AppCompatActivity() {
     private lateinit var imgBerita: ImageView
     private lateinit var tvJudul: TextView

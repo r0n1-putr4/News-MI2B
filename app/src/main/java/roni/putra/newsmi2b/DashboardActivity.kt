@@ -41,10 +41,10 @@ class DashboardActivity : AppCompatActivity() {
             insets
         }
 
-        rvNews = findViewById(R.id.rvNews)
+        rvNews = findViewById(R.id.rvWisata)
         progressBar = findViewById(R.id.progressBar)
-        svJudul = findViewById(R.id.svJudul)
-        fab_tambah = findViewById(R.id.fab_tambah)
+        svJudul = findViewById(R.id.svWisata)
+        fab_tambah = findViewById(R.id.floatBtnTambah)
         imgNotFound = findViewById(R.id.imgNotFound)
 
         getBerita("")

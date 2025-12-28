@@ -149,6 +149,7 @@ class TambahBeritaActivity : AppCompatActivity() {
         }
     }
 
+
     override fun onActivityResult(
         requestCode: Int,
         resultCode: Int,
