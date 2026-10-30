@@ -22,6 +22,7 @@ interface ApiService {
     @FormUrlEncoded
     @POST("api_basic/register.php")
     fun register(
+        @Query("id") id: String,
         @Field("username") username: String,
         @Field("password") password: String,
         @Field("fullname") fullname: String,

@@ -80,9 +80,12 @@ class TambahBeritaActivity : AppCompatActivity() {
     private fun addBerita(judul: String, isi: String, fileGambar: File) {
         progressBar.visibility = View.VISIBLE
 
-        val requestBody = fileGambar.asRequestBody("multipart/form-data".toMediaTypeOrNull())
-        val part = MultipartBody.Part.createFormData("fileGambar", fileGambar.name, requestBody)
-
+//        val requestBody = fileGambar.asRequestBody("multipart/form-data".toMediaTypeOrNull())
+//        val part = MultipartBody.Part.createFormData("fileGambar", fileGambar.name, requestBody)
+        val part = MultipartBody.Part.createFormData(
+            "fileGambar", fileGambar.name,
+            fileGambar.asRequestBody("image/*".toMediaType())
+        )
         val title = judul.toRequestBody("text/plain".toMediaTypeOrNull())
         val description = isi.toRequestBody("text/plain".toMediaTypeOrNull())
 
@@ -158,9 +161,15 @@ class TambahBeritaActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (resultCode == Activity.RESULT_OK && data != null) {
-            val uri = data.data!!
-            imageFile = File(uri.path!!)
-            tvSelectedFile.text = imageFile!!.name
+            val imageUri = data.data!!
+            if (imageUri.scheme == "file") {
+                imageFile = File(imageUri.path!!)
+
+                tvSelectedFile.text = imageFile!!.name
+//                binding.ivArticle.setImageURI(uri)
+            }
+
+//
         }
     }
 }
